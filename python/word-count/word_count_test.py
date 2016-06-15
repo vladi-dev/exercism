@@ -64,25 +64,25 @@ class WordCountTests(unittest.TestCase):
                        'ga ga oh la la\nwant your bad romance')
         )
 
-    # def test_tabs(self):
-    #     self.assertEqual(
-    #         {'rah': 2, 'ah': 3, 'roma': 2, 'ma': 1, 'ga': 2, 'oh': 1, 'la': 2,
-    #          'want': 1, 'your': 1, 'bad': 1, 'romance': 1},
-    #         word_count('rah rah ah ah ah\troma roma ma\tga ga oh la la\t'
-    #                    'want your bad romance')
-    #     )
-    #
-    # def test_non_alphanumeric(self):
-    #     self.assertEqual(
-    #         {'hey': 1, 'my': 1, 'spacebar': 1, 'is': 1, 'broken': 1},
-    #         word_count('hey,my_spacebar_is_broken.')
-    #     )
+    def test_tabs(self):
+        self.assertEqual(
+            {'rah': 2, 'ah': 3, 'roma': 2, 'ma': 1, 'ga': 2, 'oh': 1, 'la': 2,
+             'want': 1, 'your': 1, 'bad': 1, 'romance': 1},
+            word_count('rah rah ah ah ah\troma roma ma\tga ga oh la la\t'
+                       'want your bad romance')
+        )
 
-    # def test_unicode(self):
-    #     self.assertEqual(
-    #         {decode_if_needed('до'): 1, decode_if_needed('свидания'): 1},
-    #         word_count('до🖖свидания!')
-    #     )
+    def test_non_alphanumeric(self):
+        self.assertEqual(
+            {'hey': 1, 'my': 1, 'spacebar': 1, 'is': 1, 'broken': 1},
+            word_count('hey,my_spacebar_is_broken.')
+        )
+
+    def test_unicode(self):
+        self.assertEqual(
+            {decode_if_needed('до'): 1, decode_if_needed('свидания'): 1},
+            word_count('до🖖свидания!')
+        )
 
 if __name__ == '__main__':
     unittest.main()
