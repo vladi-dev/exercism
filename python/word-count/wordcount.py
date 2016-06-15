@@ -4,7 +4,5 @@ import collections
 
 
 def word_count(str):
-    r = dict()
-    str = str.decode('utf-8')
-    str = re.sub('[\W\,\_]', ' ', str.lower(), flags=re.UNICODE).strip()
+    str = re.sub('[\W\,\_]', ' ', str.decode('utf-8').lower(), flags=re.UNICODE).strip()
     return collections.Counter(str.split())
