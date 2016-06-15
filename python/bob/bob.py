@@ -1,4 +1,3 @@
-import string
 def hey(what):
     what = what.strip()
 
