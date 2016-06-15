@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import re
-import collections
+from collections import Counter
 
 
 def word_count(str):
-    str = re.sub('[\W\,\_]', ' ', str.decode('utf-8').lower(), flags=re.UNICODE).strip()
-    return collections.Counter(str.split())
+    regexp = '\W|_'
+    return Counter(word for word in re.split(regexp, str.decode('utf-8').lower(), flags=re.UNICODE) if word != '')
