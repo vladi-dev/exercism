@@ -2,6 +2,17 @@ import unittest
 
 from allergies import Allergies
 
+tbl = {
+    'eggs': 1,
+    'peanuts': 2,
+    'shellfish': 4,
+    'strawberries': 8,
+    'tomatoes': 16,
+    'chocolate': 32,
+    'pollen': 64,
+    'cats': 128
+}
+
 
 class AllergiesTests(unittest.TestCase):
 
@@ -32,7 +43,7 @@ class AllergiesTests(unittest.TestCase):
                     'chocolate pollen cats').split()),
             sorted(Allergies(255).lst))
 
-    @unittest.skip('Extra Credit: Passes with a specific type of solution')
+    # @unittest.skip('Extra Credit: Passes with a specific type of solution')
     def test_ignore_non_allergen_score_parts(self):
         self.assertEqual(['eggs'], Allergies(257).lst)
 
