@@ -1,5 +1,5 @@
 class Allergies(object):
-    score = 0
+    lst = []
     allergies = {
         'eggs': 1,
         'peanuts': 2,
@@ -12,19 +12,14 @@ class Allergies(object):
     }
 
     def __init__(self, score):
-        self.score = score
+        self._score = score
+        self.lst = []
+        allergies = sorted(self.allergies.items(), key=self.allergies.get, reverse=True)
+
+        for allergy, cur_score in allergies:
+            if cur_score <= score and score > 0:
+                self.lst.append(allergy)
+                score -= cur_score
 
     def is_allergic_to(self, substance):
-        return self.allergies[substance] <= self.score
-
-    @property
-    def lst(self):
-        res = []
-        allergies = sorted(self.allergies.items(), key=self.allergies.get)
-
-        for allergy, score in allergies:
-            if score <= self.score and self.score > 0:
-                res.append(allergy)
-                self.score -= score
-
-        return res
+        return substance in self.lst
